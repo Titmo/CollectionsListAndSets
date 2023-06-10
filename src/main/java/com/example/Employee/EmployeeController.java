@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-    @RestController
+import java.util.List;
+
+@RestController
     @RequestMapping("/employee")
     public class EmployeeController {
 
@@ -37,5 +39,9 @@ import org.springframework.web.bind.annotation.*;
                                        @RequestParam("lastName") String lastName)
         {
             return employeeService.findPerson(name, lastName);
+        }
+        @GetMapping("/all")
+        public List<Employee> allEmployee() {
+            return employeeService.showAllPersons();
         }
 }
